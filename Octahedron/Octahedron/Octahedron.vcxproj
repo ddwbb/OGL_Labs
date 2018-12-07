@@ -120,9 +120,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\headers\Scene.cpp" />
     <ClCompile Include="..\sources\ColorArray.cpp" />
     <ClCompile Include="..\sources\Main.cpp" />
+    <ClCompile Include="..\sources\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

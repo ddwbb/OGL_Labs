@@ -18,10 +18,10 @@
     <ClCompile Include="..\sources\Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\headers\Scene.cpp">
+    <ClCompile Include="..\sources\ColorArray.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\sources\ColorArray.cpp">
+    <ClCompile Include="..\sources\Scene.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

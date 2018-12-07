@@ -39,7 +39,7 @@ static vector<const char *> texture_paths = {
 
 #define TEXTURE_ID_DEFAULT 1
 
-#define FULL_SCREEN_VIEW false
+#define FULL_SCREEN_VIEW true
 
 #define LIGHTING_DEFAULT true
 #define LIGHT_ANGLE_DEFAULT 0
