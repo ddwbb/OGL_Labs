@@ -316,7 +316,7 @@ void Scene::draw_sphere() {
 			if (lighting) {
 				glLineWidth(4);
 				glColor3f(1, 1, 0);
-				glutWireSphere(15, 8, 8);
+				glutWireSphere(8, 8, 8);
 			}
 		glPopMatrix();
 	glPopAttrib();

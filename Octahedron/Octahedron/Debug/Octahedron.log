@@ -1,4 +1,7 @@
-﻿  Scene.cpp
+﻿  Main.cpp
+c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\headers\config.h(19): warning C4091: static : пропускается слева от "colors", когда ни одна переменная не объявлена
+c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\headers\config.h(25): warning C4091: static : пропускается слева от "texturing", когда ни одна переменная не объявлена
+  Scene.cpp
 c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\headers\config.h(19): warning C4091: static : пропускается слева от "colors", когда ни одна переменная не объявлена
 c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\headers\config.h(25): warning C4091: static : пропускается слева от "texturing", когда ни одна переменная не объявлена
 c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\sources\scene.cpp(77): warning C4305: инициализация: усечение из "double" в "GLfloat"
@@ -9,4 +12,5 @@ c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octah
 c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\sources\scene.cpp(180): warning C4305: +=: усечение из "double" в "GLfloat"
 c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\sources\scene.cpp(184): warning C4305: -=: усечение из "double" в "GLfloat"
 c:\users\ddwbb\documents\workspace\university\visualstudio\opengl\ogl_labs\octahedron\sources\scene.cpp(235): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+  Создание кода...
   Octahedron.vcxproj -> C:\Users\ddwbb\Documents\workspace\university\VisualStudio\openGL\OGL_Labs\Octahedron\Debug\Octahedron.exe
