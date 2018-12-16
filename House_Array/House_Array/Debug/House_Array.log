@@ -1,0 +1,24 @@
+﻿  Field.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\field.cpp(36): warning C4305: инициализация: усечение из "double" в "GLfloat"
+  Figure.cpp
+  House.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\house.cpp(20): warning C4305: инициализация: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\house.cpp(32): warning C4305: инициализация: усечение из "double" в "GLfloat"
+  main.cpp
+  Scene.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\scene.cpp(25): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\scene.cpp(68): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\scene.cpp(70): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\scene.cpp(87): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\scene.cpp(89): warning C4305: аргумент: усечение из "double" в "GLclampf"
+  Sun.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(11): warning C4305: =: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(12): warning C4305: =: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(25): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(44): warning C4305: +=: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(56): warning C4305: =: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(57): warning C4305: =: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(61): warning C4305: =: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house_array\house_array\sun.cpp(62): warning C4305: =: усечение из "double" в "GLfloat"
+  Создание кода...
+  House_Array.vcxproj -> C:\Users\bogom\Documents\workspace\OpenGL\OGL_Labs\House_Array\Debug\House_Array.exe

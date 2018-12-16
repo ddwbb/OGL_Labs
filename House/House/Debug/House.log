@@ -1,0 +1,14 @@
+﻿  Source.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(38): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(45): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(65): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(75): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(88): warning C4244: инициализация: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(106): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(108): warning C4305: аргумент: усечение из "double" в "GLclampf"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(118): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(119): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(125): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\house\house\source.cpp(126): warning C4305: аргумент: усечение из "double" в "GLfloat"
+  House.vcxproj -> C:\Users\bogom\Documents\workspace\OpenGL\OGL_Labs\House\Debug\House.exe
