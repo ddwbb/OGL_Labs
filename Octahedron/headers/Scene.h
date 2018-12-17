@@ -16,10 +16,14 @@ class Scene {
 	bool light_disabled;
 	bool triangle_rotating;
 	bool full_screen;
+	bool blending;
+	bool slicing;
 
 	int texturing;
 	int texture_count;
+	int slice_count;
 
+	GLfloat alpha;
 	GLfloat light_angle;
 	GLfloat light_speed;
 	GLfloat light_distance;
@@ -29,6 +33,7 @@ class Scene {
 	GLfloat octahedron_speed;
 	GLfloat octahedron_aspect;
 
+	GLuint octahedron_list;
 	GLuint * texture_names;
 	AUX_RGBImageRec ** texture_images;
 
@@ -53,6 +58,9 @@ public:
 	void draw_octahedron();
 	void draw_triangle(int);
 	void draw_sphere();
+
+	void init_sliced_octahedron();
+	void init_sliced_triangles(int);
 };
 
 static Scene * instance = nullptr;

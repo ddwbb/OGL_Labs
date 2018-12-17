@@ -10,6 +10,13 @@ Scene::Scene() {
 	texture_names = new GLuint[texture_count];
 	texture_images = new AUX_RGBImageRec *[texture_count];
 
+	slice_count = SLILCE_COUNT_DEFAULT;
+
+	slicing = false;
+	alpha = ALPHA_DEFAULT;
+
+	blending = BLENDING_DEFAULT;
+
 	light_disabled = LIGHTING_DEFAULT;
 	lighting = LIGHTING_DEFAULT;
 	light_angle = LIGHT_ANGLE_DEFAULT;
@@ -53,6 +60,7 @@ void Scene::init(int * argc, char ** argv) {
 	init_view();
 	init_material();
 	init_texture();
+	init_sliced_octahedron();
 
 	initialized = true;
 }
@@ -198,6 +206,8 @@ void Scene::key_press(unsigned char key, int x, int y) {
 		light_speed += LIGHT_SPEED_VALUE;
 		break;
 	case 'R':
+		blending = BLENDING_DEFAULT;
+		slicing = SLICING_DEFAULT;
 		lighting = LIGHTING_DEFAULT;
 		light_angle = LIGHT_ANGLE_DEFAULT;
 		light_speed = LIGHT_SPEED_DEFAULT;
@@ -221,6 +231,18 @@ void Scene::key_press(unsigned char key, int x, int y) {
 		else
 			texturing++;
 		break;
+	case '-': 
+		alpha = (alpha - ALPHA_DIFFERENCE_VALUE <= 0) ? 0 : alpha - ALPHA_DIFFERENCE_VALUE;
+		break;
+	case '=':
+		alpha = (alpha + ALPHA_DIFFERENCE_VALUE >= 1) ? 1 : alpha + ALPHA_DIFFERENCE_VALUE;
+		break;
+	case 'b':
+		blending = !blending;
+		break;
+	case 'l':
+		slicing = !slicing;
+		break;
 	default:
 		break;
 	}
@@ -228,14 +250,17 @@ void Scene::key_press(unsigned char key, int x, int y) {
 
 //Drawing
 void Scene::draw_octahedron() {
-	glPushMatrix();
-	for (int i = 0; i < 8; i++) {
-		if (texturing == TEXTURE_SINGLE) draw_triangle(TEXTURE_ID_DEFAULT);
-		else draw_triangle(i);
-		glRotatef(90 * (i + 1), 0, 1, 0);
-		if (i == 3) glRotatef(180, 0, 0, 1);
+	if (slicing) glCallList(octahedron_list);
+	else {
+		glPushMatrix();
+		for (int i = 0; i < 8; i++) {
+			if (texturing == TEXTURE_SINGLE) draw_triangle(TEXTURE_ID_DEFAULT);
+			else draw_triangle(i);
+			glRotatef(90 * (i + 1), 0, 1, 0);
+			if (i == 3) glRotatef(180, 0, 0, 1);
+		}
+		glPopMatrix();
 	}
-	glPopMatrix();
 }
 
 void Scene::draw_triangle(int color) {
@@ -252,8 +277,9 @@ void Scene::draw_triangle(int color) {
 
 	if (!texturing) {
 		glEnableClientState(GL_COLOR_ARRAY);
+		color_array.set_alpha(alpha);
 		color_array.set_color(color);
-		glColorPointer(3, GL_FLOAT, 0, color_array);
+		glColorPointer(4, GL_FLOAT, 0, color_array);
 	}
 	else {
 		GLfloat texture_coord[] = {
@@ -261,12 +287,19 @@ void Scene::draw_triangle(int color) {
 			1, 0,
 			0.5, 1
 		};
-		glColor3f(1, 1, 1);
+		glColor4f(1, 1, 1, alpha);
 		glEnable(GL_TEXTURE_2D);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glTexCoordPointer(2, GL_FLOAT, 0, texture_coord);
 		if (color >= texture_count) color = texture_count - 1;
 		glBindTexture(GL_TEXTURE_2D, texture_names[color]);
+	}
+
+	if (blending) {
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_ONE, GL_ONE);
+		glDepthMask(GL_FALSE);
+
 	}
 
 	glVertexPointer(3, GL_FLOAT, 0, vertexes);
@@ -298,6 +331,39 @@ void Scene::draw_triangle(int color) {
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 		glDisable(GL_TEXTURE_2D);
 	}
+
+	glDepthMask(GL_TRUE);
+	glDisable(GL_BLEND);
+}
+
+void Scene::init_sliced_octahedron() {
+	octahedron_list = glGenLists(1);
+	glNewList(octahedron_list, GL_COMPILE_AND_EXECUTE);
+		glPushMatrix();
+		for (int i = 0; i < 8; i++) {
+			init_sliced_triangles(i);
+			glRotatef(90 * (i + 1), 0, 1, 0);
+			if (i == 3) glRotatef(180, 0, 0, 1);
+		}
+		glPopMatrix();
+	glEndList();
+}
+
+void Scene::init_sliced_triangles(int color) {
+	GLfloat width_step = (GLfloat)20 / (GLfloat)(slice_count);
+	GLfloat height_step = (GLfloat)35 / (GLfloat)(slice_count);
+	ColorArray color_array;
+	color_array.set_color(color);
+	glBegin(GL_QUADS);
+		glColor4fv(color_array);
+		glNormal3f(0, 40, -70);
+		for (int i = 1; i < slice_count * 2; i += 2) {
+			glVertex3f(-40 + i * width_step, 0 + i * height_step, 40 - i * width_step);
+			glVertex3f(-40 + (i + 1) * width_step, 0 + (i + 1) * height_step, 40 - (i + 1) * width_step);
+			glVertex3f(40 - (i + 1) * width_step, 0 + (i + 1) * height_step, 40 - (i + 1) * width_step);
+			glVertex3f(40 - i * width_step, 0 + i * height_step, 40 - i * width_step);
+		}
+	glEnd();
 }
 
 void Scene::draw_sphere() {
@@ -349,11 +415,13 @@ void print_instruction() {
 	cout << ", - Rotate light right" << endl;
 	cout << ". - Rotate light left" << endl;
 	cout << "SPACE - light ON/OFF" << endl;
+	cout << "l - Slice Octahedron" << endl;
 	cout << "1 - Rotate Octahedron right" << endl;
 	cout << "2 - Rotate Octahedron left" << endl;
 	cout << "t - Faces mod: Colors/Single Texture/Few Textures" << endl;
 	cout << "w - Move Light to center" << endl;
 	cout << "s - Move Light from center" << endl;
+	cout << "b - Blending ON/OFF" << endl;
 	cout << "ESC - Exit application" << endl;
 }
 

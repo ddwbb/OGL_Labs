@@ -10,6 +10,7 @@
 class ColorArray {
 	int size;
 	GLfloat * array;
+	GLfloat alpha;
 
 	void copy_values(GLfloat *);
 public:
@@ -23,6 +24,8 @@ public:
 	int length();
 	void set_color(int);
 	void set_color(GLfloat *);
+	void set_alpha(GLfloat);
+	void set_component(int, int, GLfloat);
 	void reset();
 };
 

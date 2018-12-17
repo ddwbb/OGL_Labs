@@ -3,17 +3,20 @@
 ColorArray::ColorArray() {
 	size = 0;
 	array = nullptr;
+	alpha = 1;
 }
 
 ColorArray::ColorArray(int n) {
 	size = n;
 	array = new GLfloat[n];
+	alpha = 1;
 }
 
 ColorArray::ColorArray(int n, GLfloat * colors) {
 	size = n;
 	array = new GLfloat[n];
 	copy_values(colors);
+	alpha = 1;
 }
 
 ColorArray::~ColorArray() {
@@ -42,47 +45,65 @@ int ColorArray::length() {
 }
 
 void ColorArray::set_color(int color_id) {
-	size = 9;
+	size = 12;
 	reset();
 
 	switch (color_id) {
 	case RED:
-		array[0] = array[3] = array[6] = 1;
+		//array[0] = array[3] = array[6] = 1;
+		set_component(0, 4, 1);
 		break;
 	case ORANGE:
-		array[0] = array[3] = array[6] = 0.7;
-		array[1] = array[4] = array[7] = 0.3;
+		set_component(0, 4, 0.7);
+		set_component(1, 4, 0.3);
+		//array[0] = array[3] = array[6] = 0.7;
+		//array[1] = array[4] = array[7] = 0.3;
 		break;
 	case YELLOW:
-		array[0] = array[3] = array[6] = 1;
-		array[1] = array[4] = array[7] = 1;
+		set_component(0, 4, 1);
+		set_component(1, 4, 1);
+		//array[0] = array[3] = array[6] = 1;
+		//array[1] = array[4] = array[7] = 1;
 		break;
 	case GREEN:
-		array[1] = array[4] = array[7] = 1;
+		set_component(1, 4, 1);
+		//array[1] = array[4] = array[7] = 1;
 		break;
 	case LIGHT_BLUE:
-		array[1] = array[4] = array[7] = 1;
-		array[2] = array[5] = array[8] = 1;
+		//array[1] = array[4] = array[7] = 1;
+		//array[2] = array[5] = array[8] = 1;
+		set_component(1, 4, 1);
+		set_component(2, 4, 1);
 		break;
 	case DARK_BLUE:
-		array[2] = array[5] = array[8] = 0.7;
+		//array[2] = array[5] = array[8] = 0.7;
+		set_component(2, 4, 0.7);
 		break;
 	case PURPLE:
-		array[0] = array[3] = array[6] = 1;
-		array[2] = array[5] = array[8] = 1;
+		//array[0] = array[3] = array[6] = 1;
+		//array[2] = array[5] = array[8] = 1;
+		set_component(0, 4, 1);
+		set_component(2, 4, 1);
 		break;
 	case MIXED:
-		array[0] = array[4] = array[8] = 1;
+		//array[0] = array[4] = array[8] = 1;
+		set_component(0, 5, 1);
 		break;
 	default:
-		for (int i = 0; i < 9; i++)
+		for (int i = 0; i < size; i++)
 			array[i] = 1;
 		break;
 	}
+
+	set_component(3, 4, alpha);
 }
 
 void ColorArray::set_color(GLfloat * colors) {
 	copy_values(colors);
+}
+
+void ColorArray::set_alpha(GLfloat a) {
+	alpha = a;
 }
 
 void ColorArray::reset() {
@@ -109,5 +130,11 @@ int array_size(GLfloat * colors) {
 	}
 	catch (...) {
 		return colors_length + 1;
+	}
+}
+
+void ColorArray::set_component(int first, int step, GLfloat value) {
+	for (int i = first; i < size; i += step) {
+		array[i] = value;
 	}
 }

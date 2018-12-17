@@ -41,6 +41,13 @@ static vector<const char *> texture_paths = {
 
 #define FULL_SCREEN_VIEW true
 
+#define ALPHA_DEFAULT 1
+#define ALPHA_DIFFERENCE_VALUE 0.05
+
+#define BLENDING_DEFAULT false
+
+#define SLICING_DEFAULT false
+
 #define LIGHTING_DEFAULT true
 #define LIGHT_ANGLE_DEFAULT 0
 #define LIGHT_SPEED_VALUE 0.5
@@ -60,5 +67,7 @@ static vector<const char *> texture_paths = {
 #define OCTAHEDRON_ASPECT_DIFFERENCE_VALUE 0.005
 
 #define CAMERA_ROTATE_ANGLE_VALUE 6
+
+#define SLILCE_COUNT_DEFAULT 9
 
 #endif
