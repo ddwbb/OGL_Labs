@@ -17,7 +17,7 @@ class Scene {
 	bool triangle_rotating;
 	bool full_screen;
 	bool blending;
-	bool slicing;
+	int slicing;
 
 	int texturing;
 	int texture_count;
@@ -33,7 +33,7 @@ class Scene {
 	GLfloat octahedron_speed;
 	GLfloat octahedron_aspect;
 
-	GLuint octahedron_list;
+	GLuint octahedron_list[2];
 	GLuint * texture_names;
 	AUX_RGBImageRec ** texture_images;
 

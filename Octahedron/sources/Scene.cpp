@@ -241,7 +241,10 @@ void Scene::key_press(unsigned char key, int x, int y) {
 		blending = !blending;
 		break;
 	case 'l':
-		slicing = !slicing;
+		if (slicing == SLICING_TRANSPARENT)
+			slicing = SLICING_OFF;
+		else
+			slicing++;
 		break;
 	default:
 		break;
@@ -250,17 +253,24 @@ void Scene::key_press(unsigned char key, int x, int y) {
 
 //Drawing
 void Scene::draw_octahedron() {
-	if (slicing) glCallList(octahedron_list);
-	else {
-		glPushMatrix();
-		for (int i = 0; i < 8; i++) {
-			if (texturing == TEXTURE_SINGLE) draw_triangle(TEXTURE_ID_DEFAULT);
-			else draw_triangle(i);
-			glRotatef(90 * (i + 1), 0, 1, 0);
-			if (i == 3) glRotatef(180, 0, 0, 1);
+	switch(slicing){
+		case SLICING_COMMON:
+			glCallList(octahedron_list[0]);
+			break;
+		case SLICING_TRANSPARENT:
+			glCallList(octahedron_list[1]);
+			break;
+		default:
+			glPushMatrix();
+			for (int i = 0; i < 8; i++) {
+				if (texturing == TEXTURE_SINGLE) draw_triangle(TEXTURE_ID_DEFAULT);
+				else draw_triangle(i);
+				glRotatef(90 * (i + 1), 0, 1, 0);
+				if (i == 3) glRotatef(180, 0, 0, 1);
+			}
+			glPopMatrix();
+			break;
 		}
-		glPopMatrix();
-	}
 }
 
 void Scene::draw_triangle(int color) {
@@ -337,8 +347,9 @@ void Scene::draw_triangle(int color) {
 }
 
 void Scene::init_sliced_octahedron() {
-	octahedron_list = glGenLists(1);
-	glNewList(octahedron_list, GL_COMPILE_AND_EXECUTE);
+	octahedron_list[0] = glGenLists(1);
+	slicing = SLICING_COMMON;
+	glNewList(octahedron_list[0], GL_COMPILE_AND_EXECUTE);
 		glPushMatrix();
 		for (int i = 0; i < 8; i++) {
 			init_sliced_triangles(i);
@@ -347,12 +358,29 @@ void Scene::init_sliced_octahedron() {
 		}
 		glPopMatrix();
 	glEndList();
+	slicing = SLICING_TRANSPARENT;
+	octahedron_list[1] = glGenLists(1);
+	glNewList(octahedron_list[1], GL_COMPILE_AND_EXECUTE);
+	glPushMatrix();
+	for (int i = 0; i < 8; i++) {
+		init_sliced_triangles(i);
+		glRotatef(90 * (i + 1), 0, 1, 0);
+		if (i == 3) glRotatef(180, 0, 0, 1);
+	}
+	glPopMatrix();
+	glEndList();
 }
 
 void Scene::init_sliced_triangles(int color) {
 	GLfloat width_step = (GLfloat)20 / (GLfloat)(slice_count);
 	GLfloat height_step = (GLfloat)35 / (GLfloat)(slice_count);
 	ColorArray color_array;
+		if (slicing == SLICING_TRANSPARENT) {
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE);
+			glDepthMask(GL_FALSE);
+			color_array.set_alpha(alpha);
+		}
 	color_array.set_color(color);
 	glBegin(GL_QUADS);
 		glColor4fv(color_array);
@@ -364,6 +392,10 @@ void Scene::init_sliced_triangles(int color) {
 			glVertex3f(40 - i * width_step, 0 + i * height_step, 40 - i * width_step);
 		}
 	glEnd();
+		if (slicing == SLICING_TRANSPARENT) {
+			glDisable(GL_BLEND);
+			glDepthMask(GL_TRUE);
+		}
 }
 
 void Scene::draw_sphere() {

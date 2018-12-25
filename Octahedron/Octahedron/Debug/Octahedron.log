@@ -1,1 +1,29 @@
-﻿  Octahedron.vcxproj -> C:\Users\bogom\Documents\workspace\OpenGL\OGL_Labs\Octahedron\Debug\Octahedron.exe
+﻿  ColorArray.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(19): warning C4091: static : пропускается слева от "colors", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(25): warning C4091: static : пропускается слева от "texturing", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(31): warning C4091: static : пропускается слева от "slicing", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\colorarray.cpp(57): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\colorarray.cpp(58): warning C4305: аргумент: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\colorarray.cpp(80): warning C4305: аргумент: усечение из "double" в "GLfloat"
+  Main.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(19): warning C4091: static : пропускается слева от "colors", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(25): warning C4091: static : пропускается слева от "texturing", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(31): warning C4091: static : пропускается слева от "slicing", когда ни одна переменная не объявлена
+  Scene.cpp
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(19): warning C4091: static : пропускается слева от "colors", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(25): warning C4091: static : пропускается слева от "texturing", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\headers\config.h(31): warning C4091: static : пропускается слева от "slicing", когда ни одна переменная не объявлена
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(85): warning C4305: инициализация: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(119): warning C4305: инициализация: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(121): warning C4305: инициализация: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(164): warning C4305: +=: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(168): warning C4305: -=: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(188): warning C4305: +=: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(192): warning C4305: -=: усечение из "double" в "GLfloat"
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(235): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(238): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(268): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(356): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+c:\users\bogom\documents\workspace\opengl\ogl_labs\octahedron\sources\scene.cpp(367): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+  Создание кода...
+  Octahedron.vcxproj -> C:\Users\bogom\Documents\workspace\OpenGL\OGL_Labs\Octahedron\Debug\Octahedron.exe

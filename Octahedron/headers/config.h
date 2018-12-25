@@ -24,6 +24,12 @@ static enum texturing {
 	TEXTURE_SINGLE
 };
 
+static enum slicing {
+	SLICING_OFF,
+	SLICING_COMMON,
+	SLICING_TRANSPARENT
+};
+
 static vector<const char *> texture_paths = {
 	"../resources/stone_texture_light.bmp",
 	"../resources/stone_texture_gray.bmp",
@@ -44,9 +50,9 @@ static vector<const char *> texture_paths = {
 #define ALPHA_DEFAULT 1
 #define ALPHA_DIFFERENCE_VALUE 0.05
 
-#define BLENDING_DEFAULT false
+#define BLENDING_DEFAULT true
 
-#define SLICING_DEFAULT false
+#define SLICING_DEFAULT SLICING_OFF
 
 #define LIGHTING_DEFAULT true
 #define LIGHT_ANGLE_DEFAULT 0
